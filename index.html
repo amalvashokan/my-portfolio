@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amal VA | Hardware & Network Engineer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            /* Background Image Styling */
+            background-image: url('https://via.placeholder.com/1920x1080/0d2840/e2e8f0'); /* Placeholder for a professional network background */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Makes background fixed while scrolling */
+            position: relative; /* Needed for overlay */
+        }
+        /* Background Overlay for readability */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Dark semi-transparent overlay */
+            z-index: -1; /* Place behind content */
+        }
+        /* Ensure content is above the overlay */
+        .header-bg, .hero-bg, .alt-section-bg, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-padding {
+            padding: 5rem 1.5rem; /* Increased padding for sections */
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding: 7rem 2rem;
+            }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .header-bg {
+            background-color: rgba(13, 40, 64, 0.9); /* Slightly transparent darker blue for header */
+            color: #e2e8f0; /* Light text for dark backgrounds */
+        }
+        .hero-bg, .card-base { /* Adjusted card background to be slightly transparent white */
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white for content sections/cards */
+        }
+        .alt-section-bg {
+            background-color: rgba(224, 242, 254, 0.9); /* Semi-transparent very light blue for alternating sections */
+        }
+        .btn-primary {
+            background-color: #1e40af; /* Deep blue for primary buttons */
+            color: white;
+            padding: 0.85rem 1.8rem; /* Slightly larger buttons */
+            border-radius: 0.75rem; /* More rounded */
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 500;
+        }
+        .btn-primary:hover {
+            background-color: #1c3d8b;
+            transform: translateY(-3px); /* More noticeable lift */
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25); /* Stronger shadow */
+        }
+        .card-base {
+            border-radius: 0.75rem;
+            padding: 2rem; /* Increased padding for cards */
+            box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.1), 0 3px 7px -2px rgba(0, 0, 0, 0.08); /* Softer shadow */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            opacity: 0; /* Initial state for animation */
+            transform: translateY(30px); /* Initial state for animation */
+        }
+        .card-base:hover {
+            transform: translateY(-10px); /* More pronounced lift on hover */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+        }
+        .icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.8rem; /* Larger icons */
+            height: 2.8rem;
+            border-radius: 9999px;
+            background-color: #1e40af; /* Deep blue for icons */
+            color: white;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .icon-link:hover {
+            background-color: #1c3d8b;
+            transform: scale(1.15); /* More pronounced scale on hover */
+        }
+
+        /* Animations */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px); /* More pronounced slide */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-load {
+            animation: fadeInSlideUp 1s ease-out forwards; /* Slower, smoother initial animation */
+        }
+        .animate-on-load.delay-1 { animation-delay: 0.1s; }
+        .animate-on-load.delay-2 { animation-delay: 0.2s; }
+        .animate-on-load.delay-3 { animation-delay: 0.3s; }
+        .animate-on-load.delay-4 { animation-delay: 0.4s; }
+        .animate-on-load.delay-5 { animation-delay: 0.5s; }
+        .animate-on-load.delay-6 { animation-delay: 0.6s; }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px); /* More pronounced slide */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Slower transition */
+            transition-delay: 0.3s; /* Increased delay for staggered effect */
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header-bg py-5 shadow-lg">
+        <div class="container flex flex-col md:flex-row justify-between items-center">
+            <div class="text-2xl font-bold mb-3 md:mb-0 animate-on-load">
+                <a href="#" class="hover:text-blue-300 transition-colors duration-300">AMAL VA</a>
+            </div>
+            <nav class="flex flex-wrap justify-center gap-6 md:gap-10 text-base md:text-lg animate-on-load delay-1">
+                <a href="#about" class="hover:text-blue-300 transition-colors duration-300 rounded-lg px-4 py-2">About</a>
+                <a href="#experience" class="hover:text-blue-300 transition-colors duration-300 rounded-lg px-4 py-2">Experience</a>
+                <a href="#expertise" class="hover:text-blue-300 transition-colors duration-300 rounded-lg px-4 py-2">Expertise</a>
+                <a href="#projects" class="hover:text-blue-300 transition-colors duration-300 rounded-lg px-4 py-2">Projects</a>
+            </nav>
+            <div class="text-md mt-3 md:mt-0 flex items-center gap-5 animate-on-load delay-2">
+                <a href="mailto:amalvashokan99@gmail.com" class="icon-link" title="Send an Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                        <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/amalva/" target="_blank" class="icon-link" title="Connect on LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3v9zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.7c0-1.1-.3-1.8-1.5-1.8A2.5 2.5 0 0012.5 14v5h-3v-9h3v1.3c.5-.7 1.2-1.3 2.5-1.3 2.8 0 3.5 1.8 3.5 4.2V19z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section (About Me) - With Generic Image -->
+    <section id="about" class="hero-bg section-padding text-center md:text-left">
+        <div class="container flex flex-col md:flex-row items-center justify-center gap-10">
+            <div class="md:w-1/2 flex flex-col items-center md:items-start">
+                <h1 class="text-6xl md:text-7xl font-extrabold text-gray-800 mb-5 leading-tight animate-on-load delay-3">AMAL VA</h1>
+                <h2 class="text-3xl md:text-4xl font-semibold text-blue-700 mb-8 animate-on-load delay-4">HARDWARE AND NETWORK ENGINEER</h2>
+                <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mb-10 animate-on-load delay-5">
+                    A dedicated and knowledgeable professional with a Diploma in Hardware and Networking. Proficient in network configuration, hardware troubleshooting, and system maintenance. Known for a keen attention to detail, strong problem-solving abilities, and a passion for staying updated with the latest industry trends. Eager to leverage practical experience and theoretical knowledge to contribute to innovative projects and support efficient network operations.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-5 animate-on-load delay-6">
+                    <a href="https://www.linkedin.com/in/amalva/" target="_blank" class="btn-primary inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                            <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3v9zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.7c0-1.1-.3-1.8-1.5-1.8A2.5 2.5 0 0012.5 14v5h-3v-9h3v1.3c.5-.7 1.2-1.3 2.5-1.3 2.8 0 3.5 1.8 3.5 4.2V19z"/>
+                        </svg>
+                        Connect on LinkedIn
+                    </a>
+                    <a href="mailto:amalvashokan99@gmail.com" class="btn-primary inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                        </svg>
+                        Send an Email
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0 animate-on-load delay-5">
+                <!-- Generic Network Engineer Profile Image (Fixed) -->
+                <img src="https://via.placeholder.com/400x300/1e40af/ffffff" alt="Network Engineer Profile"
+                     class="w-full md:w-auto max-w-sm rounded-lg object-cover shadow-xl"
+                     onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300/cccccc/333333';">
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="alt-section-bg section-padding fade-in-section">
+        <div class="container">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-12 text-center">Work Experience</h2>
+            <div class="grid grid-cols-1 gap-8">
+                <div class="card-base experience-card">
+                    <h3 class="text-2xl md:text-3xl font-semibold text-blue-700 mb-3">Network Engineer</h3>
+                    <p class="text-gray-600 mb-2 text-lg">i gate networks | Present</p>
+                    <ul class="list-disc list-inside text-gray-700 mt-4 space-y-3 pl-4">
+                        <li>Configuring and maintaining network devices such as routers, switches, and firewalls to ensure optimal network performance and security.</li>
+                        <li>Troubleshooting network connectivity issues, resolving hardware and software problems efficiently to minimize downtime.</li>
+                        <li>Implementing and managing network security protocols and solutions, including VPNs and access control lists.</li>
+                        <li>Monitoring network infrastructure for performance bottlenecks and potential security threats, applying proactive solutions.</li>
+                        <li>Collaborating with cross-functional teams to design, implement, and support scalable network solutions.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise & Education Section (Combined) -->
+    <section id="expertise" class="hero-bg section-padding fade-in-section">
+        <div class="container">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-12 text-center">My Expertise & Education</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Skills Sub-section -->
+                <div>
+                    <h3 class="text-3xl font-semibold text-blue-700 mb-8 text-center lg:text-left">Skills</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="card-base skill-card text-center">
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">Network Configuration</h4>
+                            <p class="text-gray-700 text-sm">Setting up and managing network devices and protocols.</p>
+                        </div>
+                        <div class="card-base skill-card text-center">
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">Hardware Troubleshooting</h4>
+                            <p class="text-gray-700 text-sm">Diagnosing and resolving issues across diverse hardware.</p>
+                        </div>
+                        <div class="card-base skill-card text-center">
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">System Maintenance</h4>
+                            <p class="text-gray-700 text-sm">Ensuring optimal performance and longevity of systems.</p>
+                        </div>
+                        <div class="card-base skill-card text-center">
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">Strong Problem-Solving</h4>
+                            <p class="text-gray-700 text-sm">Adept at identifying root causes and implementing effective solutions.</p>
+                        </div>
+                        <div class="card-base skill-card text-center">
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">Effective Communication</h4>
+                            <p class="text-gray-700 text-sm">Clear communication with technical and non-technical stakeholders.</p>
+                        </div>
+                        <div class="card-base skill-card text-center">
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">TCP/IP, DNS Knowledge</h4>
+                            <p class="text-gray-700 text-sm">Solid understanding of fundamental networking protocols.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Sub-section -->
+                <div>
+                    <h3 class="text-3xl font-semibold text-blue-700 mb-8 text-center lg:text-left">Education</h3>
+                    <div class="space-y-6">
+                        <div class="card-base education-card">
+                            <h4 class="text-xl font-semibold text-gray-800 mb-1">DIPLOMA IN HARDWARE NETWORKING (DHNE)</h4>
+                            <p class="text-gray-600 text-sm">Kerala state Rutronix Thrissur</p>
+                            <p class="text-gray-700 mt-2 text-sm">Comprehensive diploma covering hardware components, network topologies, and system administration.</p>
+                        </div>
+                        <div class="card-base education-card">
+                            <h4 class="text-xl font-semibold text-gray-800 mb-1">CCTV TECHNICIAN</h4>
+                            <p class="text-gray-600 text-sm">Kerala state Rutronix Thrissur</p>
+                            <p class="text-gray-700 mt-2 text-sm">Specialized training in the installation, configuration, and maintenance of CCTV systems.</p>
+                        </div>
+                        <div class="card-base education-card">
+                            <h4 class="text-xl font-semibold text-gray-800 mb-1">BACHELOR OF COMMERCE (BCOM)</h4>
+                            <p class="text-gray-600 text-sm">Jyothis College Of Advanced studies</p>
+                            <p class="text-gray-700 mt-2 text-sm">Foundational degree providing a broad understanding of business principles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="alt-section-bg section-padding fade-in-section">
+        <div class="container">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-12 text-center">My Projects & Hands-On Experience</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="card-base project-card">
+                    <h3 class="text-2xl font-semibold text-blue-700 mb-3">Home Network Setup & Security Configuration</h3>
+                    <p class="text-gray-700 mb-2"><strong>Description:</strong> Designed and implemented a secure home network, configuring a router for Wi-Fi access, DHCP, and basic firewall rules. Successfully established network connectivity for multiple devices, optimizing for speed and security.</p>
+                    <p class="text-gray-700 mb-2"><strong>My Role:</strong> Planned network topology, performed router and switch configurations, tested connectivity, and implemented security protocols (e.g., WPA2 encryption, MAC filtering).</p>
+                    <p class="text-gray-700 mb-2"><strong>Technologies Used:</strong> Routers (e.g., D-Link, TP-Link), Switches, Wi-Fi (802.11 standards), DHCP, NAT, Basic Firewalling, TCP/IP fundamentals.</p>
+                    <p class="text-gray-700"><strong>Outcome:</strong> Created a robust and secure internal network, enhancing internet access and data protection for household users.</p>
+                </div>
+                <!-- Project 2 -->
+                <div class="card-base project-card">
+                    <h3 class="text-2xl font-semibold text-blue-700 mb-3">PC Hardware Assembly & Troubleshooting Simulation</h3>
+                    <p class="text-gray-700 mb-2"><strong>Description:</strong> Assembled a personal computer from individual components (motherboard, CPU, RAM, storage, PSU, GPU). Conducted systematic troubleshooting exercises to identify and resolve common hardware conflicts and boot-up issues.</p>
+                    <p class="text-gray-700 mb-2"><strong>My Role:</strong> Selected compatible components, performed physical assembly, installed operating systems (Windows/Linux via bootable media), diagnosed POST errors, and replaced faulty components.</p>
+                    <p class="text-gray-700 mb-2"><strong>Technologies Used:</strong> Various PC components (Intel/AMD CPUs, DDR4 RAM, SATA/NVMe SSDs), BIOS/UEFI settings, Multimeter, OS installation media.</p>
+                    <p class="text-gray-700"><strong>Outcome:</strong> Gained comprehensive hands-on experience in PC building, system diagnostics, and component-level troubleshooting, ensuring optimal system performance.</p>
+                </div>
+                <!-- Project 3 -->
+                <div class="card-base project-card">
+                    <h3 class="text-2xl font-semibold text-blue-700 mb-3">CCTV Surveillance System Installation & Maintenance</h3>
+                    <p class="text-gray-700 mb-2"><strong>Description:</strong> Participated in the installation and configuration of a multi-camera CCTV surveillance system, including camera placement, cabling, DVR/NVR setup, and remote access configuration. Performed routine maintenance and troubleshooting on existing systems.</p>
+                    <p class="text-700 mb-2"><strong>My Role:</strong> Assisted with camera mounting and aiming, ran and terminated coaxial/Ethernet cables, configured DVR/NVR settings for recording and playback, and set up mobile viewing applications. Diagnosed and rectified issues like signal loss or recording failures.</p>
+                    <p class="text-gray-700"><strong>Technologies Used:</strong> Analog/IP Cameras, DVRs/NVRs, Coaxial Cable (RG59/RG6), Ethernet Cable (Cat5e/Cat6), BNC Connectors, PoE (Power over Ethernet), Video Management Software (VMS).</p>
+                    <p class="text-gray-700"><strong>Outcome:</strong> Contributed to a fully functional and reliable surveillance system, ensuring continuous security monitoring and data integrity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="header-bg py-6 text-center text-sm">
+        <div class="container">
+            <p>&copy; 2025 Amal VA. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for fade-in-section animation
+        const fadeInSections = document.querySelectorAll('.fade-in-section');
+
+        const observerOptions = {
+            root: null, /* viewport as root */
+            rootMargin: '0px',
+            threshold: 0.1 /* 10% of element visible to trigger */
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Apply staggered animation to child cards within the section
+                    const cards = entry.target.querySelectorAll('.card-base');
+                    cards.forEach((card, index) => {
+                        card.style.animation = `fadeInSlideUp 0.8s ease-out forwards ${index * 0.15}s`;
+                    });
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        }, observerOptions);
+
+        fadeInSections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initial load animation for hero section elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroElements = document.querySelectorAll('.animate-on-load');
+            heroElements.forEach(el => {
+                el.style.opacity = '0'; /* Ensure initial hidden state for JS animation */
+                el.style.transform = 'translateY(30px)'; /* Ensure initial hidden state for JS animation */
+                el.style.animationPlayState = 'running';
+            });
+        });
+    </script>
+</body>
+</html>
